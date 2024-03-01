@@ -1,0 +1,25 @@
+ {%extends "index.html"%}  
+ <!-- {%load static%} -->
+ {%block content%}
+<div class="container">
+    <h2 class="text-center">Food List</h2>
+    <div class="row">
+        {% for food in all_food %}
+        <div class="col-md-4 mb-4"> <!-- Adjust column size based on your requirement -->
+            <div class="food-card border p-3">
+                <h4>Food Name: {{ food.food_name }}</h4>
+                <div>
+                    {% if food.food_image %}
+                        <img class="food-image img-fluid" src="{% static '' %}" alt="{{ food.food_name }}" style="height: 150px; width: 150px;">
+                    {% else %}
+                        No Image
+                    {% endif %}
+                </div>
+                <p>Food Category: {{ food.Food_category }}</p>
+                
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{%endblock%}

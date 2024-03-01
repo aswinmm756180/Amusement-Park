@@ -1,0 +1,23 @@
+<!-- staff/book_food.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Food</title>
+</head>
+<body>
+    <h2>Book Food</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="meal_type">Select Meal Type:</label>
+        <select name="meal_type" id="meal_type">
+            <option value="BreakFast">Breakfast</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+        </select>
+        <br>
+        <button type="submit">Book Food</button>
+    </form>
+</body>
+</html>

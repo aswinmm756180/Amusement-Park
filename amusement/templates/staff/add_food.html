@@ -1,0 +1,20 @@
+{%extends "staff/view_food_list.html"%}
+{%block content%}
+{% for message in messages %}
+<div class="alert alert-danger alert-dismissible fade show" style="position: fixed;z-index: 90;right:100px;top:10px"
+    role="alert">
+    <strong>{{message}} !!!</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %}
+    <div class="container col-md-6 mt-5 p-5 mb-5" style="border: 1px solid rgb(4, 45, 4);">
+        <h2>Add Food</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" style="color: aliceblue; background-color: rgb(5, 90, 49);">Save Food</button>
+        </form>
+    </div>
+{%endblock%}
