@@ -1,0 +1,28 @@
+{%extends "signup.html" %}
+{%load static%}
+{%block content%}
+
+
+
+
+<div class="container" style="padding-top: 200px;">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h2 style="color: red;">YOUR ORDER CONFORMED</h2>
+              <div style="border: 2px;">
+                {% for i in orders %}
+                <h2>FOOD :{{i.food_name}}</h2>
+                <img src="{{i.food_image.url}}" alt="" width="100px" height="100px">
+                <h2>CATEGORY :{{i.Food_category}}</h2>
+                {% endfor %}
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{%endblock%}

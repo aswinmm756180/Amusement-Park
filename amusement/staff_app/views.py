@@ -1,7 +1,10 @@
 from django.shortcuts import render,redirect
 from .forms import FoodDetailsForm
 from .models import Foodlist
+from .models import staff
 from django.contrib import messages
+# from django.contrib.auth import authenticate,logout,login as auth-login
+# from django.contrib.auth.models import staff
 
 # Create your views here.
 
@@ -74,3 +77,21 @@ from django.contrib.auth.decorators import login_required
 def admin_dashboard(request):
     pending_bookings = Booking.objects.filter(approved=False)
     return render(request, 'staff/dashboard.html', {'pending_bookings': pending_bookings})
+
+
+def staff_register(request):
+    if request.method=='POST':
+        staffname=request.POST.get('name')
+        staffusername=request.POST.get('username')
+        staffemail=request.POST.get('email')
+        staffpassword=request.POST.get('pass')
+        staffuser=staff.objects.create_user(
+            staffname=sname,
+            staffusername=susernanme,
+            staffemail=semail,
+            staffpassword=spassword,
+        )
+        staffuser.save()
+        messages.success(request,'SUCCESSFULLY REGISTER')
+        # return redirect('login')
+    return render(request,'staffsignup.html')

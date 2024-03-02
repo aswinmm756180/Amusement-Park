@@ -67,14 +67,28 @@ def book_ticket(request):
         name1=request.POST.get('name') 
         age1=request.POST.get('age')
         phno1=request.POST.get('phno')
+        date1=request.POST.get('date')
         book=Bookticket.objects.create(
             name=name1,
             age=age1,
             phone=phno1,
+            date=date1,
 
         )
         book.save()
         messages.success(request,'TICKET BOOKED SUCCESSFULLY')
+        return redirect('ticket')
     return render(request,'ticketbook.html')
 
 
+
+def ticket(request):
+    detail=Bookticket.objects.all()
+    return render (request,'ticket.html',{'details':detail})
+
+
+
+
+def food(request):
+    order=Foodlist.objects.all()
+    return render (request,'foodorder.html',{'orders':order})
