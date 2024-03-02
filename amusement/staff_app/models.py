@@ -25,4 +25,4 @@ class staff(models.Model):
     semail=models.EmailField(unique=True)
     spassword=models.CharField(max_length=128)
 def __str__(self):
-    return self.name
+    return self.sname

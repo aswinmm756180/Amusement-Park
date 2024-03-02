@@ -9,7 +9,22 @@ from django.contrib import messages
 # Create your views here.
 
 
-
+def staff_register(request):
+    if request.method=='POST':
+        staffname=request.POST.get('name')
+        staffusername=request.POST.get('username')
+        staffemail=request.POST.get('email')
+        staffpassword=request.POST.get('pass')
+        staffuser=staff.objects.create_user(
+            staffname=sname,
+            staffusername=susernanme,
+            staffemail=semail,
+            staffpassword=spassword,
+        )
+        staffuser.save()
+        messages.success(request,'SUCCESSFULLY REGISTER')
+        return redirect('add_food')
+    return render(request,'staffsignup.html')
 
 
 
@@ -79,19 +94,4 @@ def admin_dashboard(request):
     return render(request, 'staff/dashboard.html', {'pending_bookings': pending_bookings})
 
 
-def staff_register(request):
-    if request.method=='POST':
-        staffname=request.POST.get('name')
-        staffusername=request.POST.get('username')
-        staffemail=request.POST.get('email')
-        staffpassword=request.POST.get('pass')
-        staffuser=staff.objects.create_user(
-            staffname=sname,
-            staffusername=susernanme,
-            staffemail=semail,
-            staffpassword=spassword,
-        )
-        staffuser.save()
-        messages.success(request,'SUCCESSFULLY REGISTER')
-        # return redirect('login')
-    return render(request,'staffsignup.html')
+
