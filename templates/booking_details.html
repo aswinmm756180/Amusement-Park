@@ -1,0 +1,23 @@
+{%extends "view_page.html"%}
+{%block content%}
+<div class="container col-md-6 mx-auto mt-5 mb-5" style="height: 50vh; border: 1px solid rgb(5, 53, 5);">
+  
+{% if booking %}
+    {% if booking.approved %}
+       
+       
+        <h2>Your booking has been approved!</h2><br>
+        <h4><span style="color: rgb(4, 61, 27); font-style: italic;">Room:</span> {{ booking.room }}</h4><br>
+        <h4><span style="color: rgb(4, 61, 27); font-style: italic;">Bed Number: </span>{{ booking.bed }}</h4><br>  
+        <h4><span style="color: rgb(4, 61, 27); font-style: italic;">Booked Date: </span>{{ booking.date }}</h4><br>  
+        
+      
+    {% else %}
+        <h2>Please wait for admin's approval.</h2>
+    {% endif %}
+{% else %}
+    <h2>You have not booked any rooms yet.</h2>
+{% endif %}
+
+</div>
+{%endblock%}

@@ -1,0 +1,134 @@
+{%extends "signup.html" %}
+{%load static%}
+
+
+
+{%block content%}
+<style>
+  .header{
+    background-color:#075B4C ;
+    color: blueviolet;
+  }
+  
+      body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #f2f2f2;
+      }
+
+      .room-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.sidebar {
+  width: 25%;
+  background-color: #f8f1f1;
+  color: rgb(11, 109, 76);
+  padding: 1px;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.room-box {
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 2px;
+  border-radius: 5px;
+}
+
+h2 {
+  color: #333;
+}
+
+p {
+  color: #666;
+}
+.book-now-button {
+          display: block;
+          margin-top: 10px;
+          padding: 8px 12px;
+          background-color: #036555;
+          color: white;
+          text-decoration: none;
+          border-radius: 5px;
+          max-width: 100px;
+      }
+      .room-box {
+          background-color: #fff;
+          padding: 15px;
+          margin-bottom: 20px;
+          border-radius: 5px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .room-card {
+          display: flex;
+          background-color: #fff;
+          margin-bottom: 20px;
+          border-radius: 5px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .room-image {
+          max-width: 200px;
+          margin-right: 20px;
+          border-radius: 5px 0 0 5px;
+          overflow: hidden;
+      }
+
+      .room-image img {
+          width: 100%;
+          height: auto;
+      }
+
+      .room-details {
+          flex-grow: 1;
+          padding: 15px;
+      }
+
+@media (max-width: 768px) {
+  .room-container {
+      flex-direction: column;
+  }
+
+  .sidebar,
+  .content {
+      width: 100%;
+  }
+}
+  </style>
+   
+<div class="container">
+    <h2 class="text-center">Food List</h2>
+    <div class="row" style="margin-top: 100px;">
+        {% for food in all_food %}
+        <div class="col-md-4 mb-4"> <!-- Adjust column size based on your requirement -->
+            <div class="food-card border p-3">
+                <h4>Food Name: {{ food.food_name }}</h4>
+                <div>
+                    {% if food.food_image %}
+                        <img class="food-image img-fluid" src="{{ food.food_image.url }}" alt="{{ food.food_name }}" style="height: 150px; width: 150px;">
+                    {% else %}
+                        No Image
+                    {% endif %}
+                </div>
+                <p>Food Category: {{ food.Food_category }}</p>
+                <div class="button-container">
+                    <a href="{% url 'edit_food' food.food_id %}" class="btn btn-primary mr-2">Edit</a>
+                    <a href="{% url 'deletefood' food.food_id %}" class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')"><i class="fa fa-trash"></i> Delete</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+    {%endblock%}
+    
