@@ -9,29 +9,45 @@
     </button>
 </div>
 {% endfor %}
+
+
+
+<div class="container" style="padding-top: 200px;">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+              <h2>Edit Food</h2>
+            <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+        
+                {% if food.food_image %}
+                    <img src="{{ food.food_image.url }}" alt="{{ food.food_name }}" style="max-width: 200px; max-height: 200px;">
+                {% else %}
+                    No Image
+                {% endif %}<br><br>
+
+        
+                <label for="id_food_image">Update Image:</label>
+                <input type="file" name="food_image" id="id_food_image"><br><br>
+
+                 <!-- Include other fields excluding the image field -->
+                <label for="id_food_name">Food Name:</label>
+                {{ form.food_name }}<br><br>
+        
+                <label for="id_Food_category">Food Category:</label>
+                {{ form.Food_category }}
+                <br><br>
+                <button type="submit" style="color: aliceblue; background-color: rgb(3, 116, 161);">Update</button>
+            </form>      
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 <div class="container col-md-6 mt-5 mb-5 p-5" style="border: 1px solid rgb(9, 100, 198);">
-    <h2>Edit Food</h2>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        
-        {% if food.food_image %}
-            <img src="{{ food.food_image.url }}" alt="{{ food.food_name }}" style="max-width: 200px; max-height: 200px;">
-        {% else %}
-            No Image
-        {% endif %}<br><br>
-
-        
-        <label for="id_food_image">Update Image:</label>
-        <input type="file" name="food_image" id="id_food_image"><br><br>
-
-        <!-- Include other fields excluding the image field -->
-        <label for="id_food_name">Food Name:</label>
-        {{ form.food_name }}<br><br>
-        
-        <label for="id_Food_category">Food Category:</label>
-        {{ form.Food_category }}
-        <br><br>
-        <button type="submit" style="color: aliceblue; background-color: rgb(3, 116, 161);">Update</button>
-    </form>
+    
 </div>
 {%endblock%}

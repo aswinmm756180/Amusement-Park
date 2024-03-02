@@ -304,7 +304,7 @@ html,body{
 	/* background: url(../../assets/images/home/banner.jpg)no-repeat; */
 background-image: url( ../images/home/img3.jpg);
 
-	background-size: contain;
+	background-size: cover;
 	/* background-position: center; */
 	min-height: 1000px;
     height: 700px;

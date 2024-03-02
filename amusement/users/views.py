@@ -45,6 +45,11 @@ def signin(request):
 
     return render(request,"signin.html")
 
+
+def signout(request):
+    logout(request)
+    return redirect("signin")  
+
 def viewpage(request):
     return render(request,"viewpage.html")
 
@@ -57,36 +62,3 @@ def view_food(request):
 
 
 
-
-def book_room(request):
-    if request.method == 'POST':
-        user = request.user
-        room = request.POST.get('room')
-        bed = str(request.POST.get('bed'))  # Convert to string
-        date_str = request.POST.get('date')  # Assuming you have a separate date input
-        date = timezone.make_aware(datetime.strptime(date_str, '%Y-%m-%d'))
-        current_time = timezone.now()
-
-        # Check if the room is already full
-        if Booking.objects.filter(room=room, date=date).count() >= 5:
-            messages.info(request, "The room is full")
-        
-        # Check if the requested bed in the room is already booked
-        if Booking.objects.filter(room=room, bed=bed, date=date).exists():
-            messages.info(request, "The bed is already booked")  
-        
-        # Create a new booking with current time
-        booking = Booking.objects.create(user=user, room=room, bed=bed, time=current_time, date=date)
-        booking.save()
-        
-        return redirect('booking_confirmation', booking_id=booking.id)  # Redirect with booking ID
-    
-    return render(request, 'booking.html', {'rooms_choice': Booking.rooms_choice, 'beds_choice': Booking.beds_choice})
-
-
-
-#     @login_required
-# def booking_confirmation(request):
-#     user = request.user
-#     booking = Booking.objects.filter(user=user).first()
-#     return render(request, 'booking_details.html', {'booking': booking})
