@@ -1,7 +1,7 @@
  {%extends "index.html"%}  
  <!-- {%load static%} -->
  {%block content%}
-<div class="container" style="margin-top: 100px;">
+<div class="container" style="margin-top: 50px;">
     <h2 class="text-center">Food List</h2>
     <div class="row">
         {% for food in all_food %}
@@ -16,7 +16,9 @@
                     {% endif %}
                 </div>
                 <p>Food Category: {{ food.Food_category }}</p>
-                
+                <button class="about-view packages-btn">
+                    order now
+                </button>
             </div>
         </div>
         {% endfor %}

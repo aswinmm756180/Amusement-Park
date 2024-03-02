@@ -85,3 +85,10 @@ def book_ticket(request):
 def ticket(request):
     detail=Bookticket.objects.all()
     return render (request,'ticket.html',{'details':detail})
+
+
+
+
+def food(request):
+    order=Foodlist.objects.all()
+    return render (request,'foodorder.html',{'orders':order})

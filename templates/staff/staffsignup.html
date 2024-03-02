@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="d-flex justify-content-center align-items-center my-5 py-5">
+        <div class="container">
+            <div class="row justify-content-center align-items-center my-5 py-5" style="margin-top: 60px;">
+                <div class="col-lg col-md col-sm col">
+                    <div class="bg-primary py-4 px-4 px-sm-5"
+                        style="width:50%; margin-left: auto; margin-right: auto; box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px; margin-bottom: 50px;">
+
+                        <form class="py-5 rounded-4" action="" method="POST">
+                            {% csrf_token %}
+                            <div class="text-center"> <!-- Center the form fields and labels -->
+                                <div class="form-group">
+                                    <label for="">Staff Name</label>
+                                    <input type="text" name="name" id=" "><br><br>
+                                    <label for="">Staff Username</label>
+                                    <input type="text" name="username" id=" "><br><br>
+                                    <label for="">Email</label>
+                                    <input type="email" name="email" id=" "><br><br>
+                                    <label for="">Password</label>
+                                    <input type="password" name="pass" id=" "><br><br>
+                                </div>
+
+                            </div><br><br>
+                            <div>
+                                <button class="btn btn-block border-0 py-2" type="submit"
+                                    style="width: 200px; align-items: center; margin-left: 200px; border-radius: 5px; background-color: rgb(4, 44, 76); color: aliceblue;">Register</button>
+                            </div><br>
+                            <p class="text-center" style="color: rgb(237, 241, 230);">Already have an account? <a
+                                    href="{% url 'signin' %}" class="link">Login Here</a></p>
+                            <div>
+                                {% for i in messages %}
+                                <h3 style="color: red;">{{i}}</h3>
+                                {% endfor %}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+
+
+
