@@ -7,6 +7,8 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
 from staff_app.models import Foodlist
 from .models import Bookticket
+from.models import *
+
 
 # Create your views here.
 def index(request):
@@ -60,19 +62,26 @@ def view_food(request):
     return render(request,"viewfood.html",{"all_food":food})
 
 
-def bookticket(request):
+def book_ticket(request):
     if request.method == 'POST':
         name1=request.POST.get('name') 
         age1=request.POST.get('age')
         phno1=request.POST.get('phno')
+        date1=request.POST.get('date')
         book=Bookticket.objects.create(
             name=name1,
             age=age1,
             phone=phno1,
+            date=date1,
 
         )
         book.save()
         messages.success(request,'TICKET BOOKED SUCCESSFULLY')
-        return render(request,'ticketbook.html',{'book': book})
+        return redirect('ticket')
+    return render(request,'ticketbook.html')
 
 
+
+def ticket(request):
+    detail=Bookticket.objects.all()
+    return render (request,'ticket.html',{'details':detail})
