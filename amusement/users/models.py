@@ -23,27 +23,34 @@ class UserProfile(models.Model):
 
 
 
+class Bookticket(models.Model):
+    name=models.CharField(max_length=100,null=True,blank=True)
+    age=models.IntegerField(null=True,blank=True)
+    phone=models.IntegerField(null=True,blank=True)
+def __str__(self):
+    return self.name
 
-class Booking(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    rooms_choice=[
-        ('Room1','Room1'),
-        ('Room2',"Room2"),
-        ('Room3',"Room3"),
-        ('Room4',"Room4"),
-        ('Room5',"Room5"),
-        ('Room6',"Room6"),
 
-    ]
-    room = models.CharField(max_length=20, choices=rooms_choice, default='Room1')
-    beds_choice = [
-        ('BedNo:1', 'BedNo:1'),
-        ('BedNo:2', 'BedNo:2'),
-        ('BedNo:3', 'BedNo:3'),
-        ('BedNo:4', 'BedNo:4'),
-        ('BedNo:5', 'BedNo:5'),
-    ]
-    bed = models.CharField(max_length=20, choices=beds_choice,default="BedNo:1")
-    time = models.DateTimeField(null=True)
-    date = models.DateField(null=True)
-    approved = models.BooleanField(default=False)
+# class Booking(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+#     rooms_choice=[
+#         ('Room1','Room1'),
+#         ('Room2',"Room2"),
+#         ('Room3',"Room3"),
+#         ('Room4',"Room4"),
+#         ('Room5',"Room5"),
+#         ('Room6',"Room6"),
+
+#     ]
+    # room = models.CharField(max_length=20, choices=rooms_choice, default='Room1')
+    # beds_choice = [
+    #     ('BedNo:1', 'BedNo:1'),
+    #     ('BedNo:2', 'BedNo:2'),
+    #     ('BedNo:3', 'BedNo:3'),
+    #     ('BedNo:4', 'BedNo:4'),
+    #     ('BedNo:5', 'BedNo:5'),
+    # ]
+    # bed = models.CharField(max_length=20, choices=beds_choice,default="BedNo:1")
+    # time = models.DateTimeField(null=True)
+    # date = models.DateField(null=True)
+    # approved = models.BooleanField(default=False)
