@@ -24,5 +24,6 @@ class staff(models.Model):
     usernanme=models.CharField(max_length=100,null=True,blank=True)
     email=models.EmailField(unique=True)
     password=models.CharField(max_length=128)
+    password2=models.CharField(max_length=128)
 def __str__(self):
     return self.name

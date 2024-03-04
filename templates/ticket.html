@@ -2,28 +2,29 @@
 {%load static%}
 {%block content%}
 
+<style>
+
+</style>
 
 
 
-<div class="container" style="padding-top: 200px;">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <h2>YOUR TICKET</h2>
-              <div style="border: 2px;">
-                {% for i in details %}
-                <h2>TICKET NO: {{i.pk}}</h2>
-                <h2>DATE BOOKED :{{i.date}}</h2>
-                <h2>NAME :{{i.name}}</h2>
-                <h2>AGE :{{i.age}}</h2>
-                {% endfor %}
-              </div>
-            </div>
+
+<div class="container">
+  ><h2 style="text-align: center; color: black;">YOUR TICKET</h2>
+  <div class="row" style="margin-top: 100px;">
+    <div class="col-md-4 mb-4"> <!-- Adjust column size based on your requirement -->
+      <div class="food-card border p-3">
+        <div>
+          {% for i in details %}
+          <h4>TICKET NO:{{i.pk}}</h4>
+          <h4>DATE BOOKED :{{i.date}}</h4>
+          <h4>NAME:{{i.name}}</h4>
+          <h4>AGE:{{i.age}}</h4>
+          {% endfor %}
         </div>
+      </div>
     </div>
+  </div>
 </div>
-
-
-
-
 
 {%endblock%}
