@@ -28,6 +28,7 @@ class Bookticket(models.Model):
     age=models.IntegerField(null=True,blank=True)
     phone=models.IntegerField(null=True,blank=True)
     date=models.DateField(null=True)
+    count=models.IntegerField(null=True,blank=True)
 
 def __str__(self):
     return self.name

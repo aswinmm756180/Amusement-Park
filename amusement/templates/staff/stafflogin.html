@@ -1,0 +1,28 @@
+{%extends "signup.html" %}
+{%load static%}
+{%block content%}
+
+    <div class="d-flex justify-content-center align-items-center mx-auto" style="height: 100vh;">
+        <div class="container w-75 ">
+            <div class="row justify-content-center align-items-center ">
+                <div class="col-lg col-md col-sm col">
+                    <div class="bg-primary py-3 px-4 px-sm-5 mx-auto"
+                        style="border-radius: 20px; width: 500px; box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px; margin-top: 200px; margin-left: auto; margin-right: auto;">
+                        <div>
+                            <h2 style="color: rgb(230, 229, 236); text-align: center;">STAFF LOGIN </h2>
+                        </div>
+                        <form class="py-5" action="{% url 'staff_register' %}" method="post"
+                            style="margin-left: auto; margin-right: auto; padding: 30px;">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <div>
+                                <button class="btn btn-dark btn-block border-0 py-2" type="submit" style="width: 200px; align-items: center; margin-left: 130px; border-radius: 5px; background-color: rgb(4, 4, 68); color: aliceblue;">login</button>
+                            </div>
+                            <p class="text-center text-dark" style="color: rgb(245, 244, 248);">Don't have an account? <a
+                                    href="{% url 'staff_register' %}" class="link" style="color: black;">Register Here</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+{%endblock%}

@@ -20,9 +20,10 @@ class Foodlist(models.Model):
 
 
 class staff(models.Model):
-    sname=models.CharField(max_length=100,null=True,blank=True)
-    susernanme=models.CharField(max_length=100,null=True,blank=True)
-    semail=models.EmailField(unique=True)
-    spassword=models.CharField(max_length=128)
+    name=models.CharField(max_length=100,null=True,blank=True)
+    usernanme=models.CharField(max_length=100,null=True,blank=True)
+    email=models.EmailField(unique=True)
+    password=models.CharField(max_length=128)
+    password2=models.CharField(max_length=128)
 def __str__(self):
-    return self.sname
+    return self.name

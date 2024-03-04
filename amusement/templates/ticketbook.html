@@ -6,8 +6,8 @@
 
 <div class="container" style="padding-top: 200px;">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <h2>Book Your Ticket</h2>
+        <div class="col-md-6 col-md-offset-3" style="width: 400px; height: 400px; color: black; background-color: aqua; text-align: center; border: 2px black;">
+            <h2 style="color: black; padding: 30px;">Book Your Ticket</h2>
             <form action="" method="POST">
                 {% csrf_token %}
                 <label for="">NAME :</label>
@@ -19,9 +19,9 @@
                 <label for="">DATE FOR BOOKING :</label>
                 <input type="date" name="date" id=""><br><br>
                 <label for="">NO OF PASSES :</label>
-                <input type="number" style="width: 30px; height: 28px; border:2px solid black;  border-radius: 4px;" placeholder="1"><br><br>
+                <input type="number" name="count" style="width: 30px; height: 28px; border:2px solid black;  border-radius: 4px;" placeholder="1"><br><br>
                 <h4>price : $1000</h4>
-                <button type="submit" class="btn">BOOK TICKET</button>
+                <button type="submit" class="btn" style="background-color: blue; color: white; ">BOOK TICKET</button>
             </form>
             <div>
                 {% for i in messages %}
@@ -31,6 +31,7 @@
         </div>
     </div>
 </div>
+
 
 
 

@@ -3,28 +3,61 @@ from .forms import FoodDetailsForm
 from .models import Foodlist
 from .models import staff
 from django.contrib import messages
-# from django.contrib.auth import authenticate,logout,login as auth-login
-# from django.contrib.auth.models import staff
+from .forms import StaffRegistrationForm
 
-# Create your views here.
 
+
+
+
+
+
+from django.shortcuts import render, redirect
+from .forms import StaffRegistrationForm
 
 def staff_register(request):
-    if request.method=='POST':
-        staffname=request.POST.get('name')
-        staffusername=request.POST.get('username')
-        staffemail=request.POST.get('email')
-        staffpassword=request.POST.get('pass')
-        staffuser=staff.objects.create_user(
-            staffname=sname,
-            staffusername=susernanme,
-            staffemail=semail,
-            staffpassword=spassword,
-        )
-        staffuser.save()
-        messages.success(request,'SUCCESSFULLY REGISTER')
-        return redirect('add_food')
-    return render(request,'staffsignup.html')
+    if request.method == 'POST':
+        form = StaffRegistrationForm(request.POST)
+        if form.is_valid():
+            staff = form.save(commit=False)
+
+            # Check if passwords match
+            if staff.password == staff.password2:
+                staff.save()
+                return redirect('staff_login')  # Redirect to a success page
+            else:
+                form.add_error('password2', 'Passwords do not match.')
+    else:
+        form = StaffRegistrationForm()
+
+    return render(request, 'staff/staffsignup.html', {'form': form})
+
+
+
+
+from django.contrib.auth import authenticate, login
+from .forms import StaffLoginForm
+
+
+
+
+def staff_login(request):
+    if request.method == 'POST':
+        form = StaffLoginForm(request, request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, usernanme=username, password=password)
+
+            if user is not None:
+                login(request, user)
+                return redirect('manage_staff')  # Redirect to a success page
+            else:
+                form.add_error(None, 'Invalid username or password.')
+
+    else:
+        form = StaffLoginForm()
+
+    return render(request, 'staff/stafflogin.html', {'form': form})
 
 
 
@@ -92,6 +125,11 @@ from django.contrib.auth.decorators import login_required
 def admin_dashboard(request):
     pending_bookings = Booking.objects.filter(approved=False)
     return render(request, 'staff/dashboard.html', {'pending_bookings': pending_bookings})
+
+
+def manage_staff(request):
+    return render(request,'staff/staffmanage.html')
+
 
 
 

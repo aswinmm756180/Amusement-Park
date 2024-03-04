@@ -68,11 +68,13 @@ def book_ticket(request):
         age1=request.POST.get('age')
         phno1=request.POST.get('phno')
         date1=request.POST.get('date')
+        count1=request.POST.get('count')
         book=Bookticket.objects.create(
             name=name1,
             age=age1,
             phone=phno1,
             date=date1,
+            count=count1,
 
         )
         book.save()

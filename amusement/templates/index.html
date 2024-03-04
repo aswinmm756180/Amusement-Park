@@ -103,7 +103,7 @@
 												</button>
 												<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 												  <a class="dropdown-item" href="{%url 'signup' %}" style="color: black;">User Login</a>
-												  <a class="dropdown-item" href="#" style="color: black;">Staff Login</a>
+												  <a class="dropdown-item" href="{%url 'staff_register' %}" style="color: black;">Staff Login</a>
 												  <a class="dropdown-item" href="#" style="color: black;">Admin Login</a>
 												</div>
 											  </div>
@@ -134,8 +134,8 @@
 
 									</h2>
 									<div class="about-btn">
-										<button  class="about-view" style="border-radius: 10px;">
-											Signup
+										<button>
+											<a href="{%url 'signup' %}" style="border-radius: 10px; font-size: 30px;" class="about-view">Signup</a>
 										</button>
 									</div><!--/.about-btn-->
 								</div><!--/.about-us-txt-->
@@ -162,7 +162,7 @@
 					<div class="col-md-4 col-sm-4">
 						<div class="single-service-box">
 							<div class="service-img">
-								<img src="{%static '/images/img1.jpg' %}" alt="service-icon" style="height: fit-content;" />
+								<img src="{%static '/images/img4.jpg' %}" alt="service-icon" style="height: fit-content;" />
 							</div><!--/.service-img-->
 							<div class="service-content">
 								<h2>
@@ -194,7 +194,7 @@
 					<div class="col-md-4 col-sm-4">
 						<div class="single-service-box">
 							<div class="statistics-img">
-								<img src="{%static '/images/img3.jpg' %}" alt="service-icon" style="height: fit-content;" />
+								<img src="{%static '/images/img8.jpg' %}" alt="service-icon" style="height: fit-content;" />
 							</div><!--/.service-img-->
 							<div class="service-content">
 
@@ -257,7 +257,7 @@
 
 						  			<div class="col-md-4">
 						  				<div class="filtr-item">
-											<img src="{%static '/images/img4.jpg' %}" alt="portfolio image" style="height: 650px; width: 350px;"/>
+											<img src="{%static '/images/img7.jpg' %}" alt="portfolio image" style="height: 650px; width: 350px;"/>
 											<div class="item-title">
 												<a href="#">
 													brazil
@@ -281,7 +281,7 @@
 
 						  			<div class="col-md-4">
 						  				<div class="filtr-item">
-											<img src="{%static '/images/img7.jpg' %}" alt="portfolio image" style="height: 350px; width: 310px;"/>
+											<img src="{%static '/images/img4.jpg' %}" alt="portfolio image" style="height: 350px; width: 310px;"/>
 											<div class="item-title">
 												<a href="#">
 													netharland
@@ -353,7 +353,7 @@
 									</div><!--/.packages-review-->
 									<div class="about-btn">
 										<button  class="about-view packages-btn">
-											book now
+											<a href="{%url 'signup' %}">book now</a>
 										</button>
 									</div><!--/.about-btn-->
 								</div><!--/.single-package-item-txt-->
@@ -379,7 +379,7 @@
 									</div><!--/.packages-review-->
 									<div class="about-btn">
 										<button  class="about-view packages-btn">
-											book now
+											<a href="{%url 'signup' %}">book now</a>
 										</button>
 									</div><!--/.about-btn-->
 								</div><!--/.single-package-item-txt-->
@@ -405,7 +405,7 @@
 									</div><!--/.packages-review-->
 									<div class="about-btn">
 										<button  class="about-view packages-btn">
-											book now
+											<a href="">book now</a>
 										</button>
 									</div><!--/.about-btn-->
 								</div><!--/.single-package-item-txt-->
