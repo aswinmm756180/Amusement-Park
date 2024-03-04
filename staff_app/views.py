@@ -50,7 +50,7 @@ def staff_login(request):
 
             if user is not None:
                 login(request, user)
-                return redirect('Food_list')  # Redirect to a success page
+                return redirect('manage_staff')  # Redirect to a success page
             else:
                 form.add_error(None, 'Invalid username or password.')
 
@@ -125,5 +125,11 @@ from django.contrib.auth.decorators import login_required
 def admin_dashboard(request):
     pending_bookings = Booking.objects.filter(approved=False)
     return render(request, 'staff/dashboard.html', {'pending_bookings': pending_bookings})
+
+
+def manage_staff(request):
+    return render(request,'staff/staffmanage.html')
+
+
 
 

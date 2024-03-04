@@ -13,6 +13,9 @@ urlpatterns=[
     path('deletefood/<int:pk>/', views.deletefood, name='deletefood'),
     path('staff_register',views.staff_register, name='staff_register'),
     path('staff_login',views.staff_login, name='staff_login'),
+    path('manage_staff',views.manage_staff,name='manage_staff'),
+    
+
     
     
 
