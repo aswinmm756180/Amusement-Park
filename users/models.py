@@ -18,8 +18,8 @@ class UserProfile(models.Model):
     parents_contact=models.CharField(max_length=12,null=True,blank=True)
     profile_photo = models.ImageField(upload_to='profile_photos/', blank=True, null=True)
 
-    def __str__(self):
-        return self.user.username
+def __str__(self):
+    return self.user.username
 
 
 

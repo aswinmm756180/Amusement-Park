@@ -33,11 +33,15 @@ class StaffRegistrationForm(forms.ModelForm):
 
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
+from .models import staff
+
+
+# class StaffLoginForm(AuthenticationForm):
+#     class Meta:
+#         model = staff
+#         fields = ['username', 'password']
 
 class StaffLoginForm(AuthenticationForm):
     class Meta:
         model = staff
         fields = ['username', 'password']
-
-
-
