@@ -12,7 +12,7 @@ from .forms import StaffRegistrationForm
 
 
 from django.shortcuts import render, redirect
-from .forms import StaffRegistrationForm
+# from .forms import StaffRegistrationForm
 
 def staff_register(request):
     if request.method == 'POST':
@@ -42,17 +42,18 @@ from .forms import StaffLoginForm
 
 def staff_login(request):
     if request.method == 'POST':
-        form = StaffLoginForm(request, request.POST)
+        form = StaffLoginForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = authenticate(request, usernanme=username, password=password)
 
             if user is not None:
-                login(request, user)
+                login(request,user)
                 return redirect('manage_staff')  # Redirect to a success page
             else:
-                form.add_error(None, 'Invalid username or password.')
+                form.add_error(None,'Invalid username or password.')
+                return redirect('staff_login') 
 
     else:
         form = StaffLoginForm()

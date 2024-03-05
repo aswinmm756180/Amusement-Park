@@ -150,7 +150,7 @@
 			width: 80%;
 			border: 1px solid rgb(173, 173, 173);
 			padding: 8px;
-			color: #333;
+			color: black;
 			margin: 5px 0;
 			border-radius: 5px;
 
@@ -181,11 +181,10 @@
 
 						<form class="py-5 rounded-4" action="" method="POST">
 							{% csrf_token %}
-							<div class="text-center"> <!-- Center the form fields and labels -->
+							<div class="text-center" style="margin-top: 100px; border-radius: 25px;"> <!-- Center the form fields and labels -->
 								{% for field in form %}
 								<div class="form-group">
-									<label for="{{ field.id_for_label }}" class="label-tag">{{ field.label
-										}}:</label><br>
+									<label for="{{ field.id_for_label }}" class="label-tag">{{ field.label }}:</label><br>
 									{{ field }}
 								</div>
 								{% endfor %}
