@@ -42,7 +42,7 @@ from .forms import StaffLoginForm
 
 def staff_login(request):
     if request.method == 'POST':
-        form = StaffLoginForm(request.POST)
+        form = StaffLoginForm(request,request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
@@ -58,7 +58,7 @@ def staff_login(request):
     else:
         form = StaffLoginForm()
 
-    return render(request, 'staff/stafflogin.html', {'form': form})
+    return render(request,'staff/stafflogin.html', {'form': form})
 
 
 
