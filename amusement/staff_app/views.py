@@ -12,7 +12,7 @@ from .forms import StaffRegistrationForm
 
 
 from django.shortcuts import render, redirect
-from .forms import StaffRegistrationForm
+# from .forms import StaffRegistrationForm
 
 def staff_register(request):
     if request.method == 'POST':
@@ -35,29 +35,68 @@ def staff_register(request):
 
 
 from django.contrib.auth import authenticate, login
+# from .forms import StaffLoginForm
+from django.shortcuts import render, redirect
 from .forms import StaffLoginForm
 
 
 
 
+# def staff_login(request):
+#     if request.method == 'POST':
+#         form = StaffLoginForm(request,request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data['username']
+#             password = form.cleaned_data['password']
+#             user = authenticate(request, usernanme=username, password=password)
+
+#             if user is not None:
+#                 login(request,user)
+#                 return redirect('manage_staff')  # Redirect to a success page
+#             else:
+#                 form.add_error(None,'Invalid username or password.')
+#                 return redirect('staff_login') 
+
+#     else:
+#         form = StaffLoginForm()
+
+#     return render(request,'staff/stafflogin.html', {'form': form})
+
+
+
+
+
+
+# def staff_login(request):
+#     if request.method == 'POST':
+#         form = StaffLoginForm(request, request.POST)
+#         if form.is_valid():
+#             username1 = form.cleaned_data['username']
+#             password1 = form.cleaned_data['password']
+#             user = authenticate(request, usernanme=username, password=password)
+
+#             if user is not None:
+#                 login(request, user)
+#                 # Redirect to staff-specific page or dashboard
+#                 return redirect('manage_staff')
+#             else:
+#                 form.add_error(None, 'Invalid username or password.')
+#     else:
+#         form = StaffLoginForm()
+
+#     return render(request, 'staff/stafflogin.html', {'form': form})
+
+
 def staff_login(request):
-    if request.method == 'POST':
-        form = StaffLoginForm(request, request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(request, usernanme=username, password=password)
+    if request.method=='post':
+        username1=request.POST.get("username")
+        password1=request.POST.get("password")
+        staff=authenticate(request,usernanme=username, password=password)
+        if user is not None:
+            auth_login(request,staff)
+            return redirect('manage_staff')
 
-            if user is not None:
-                login(request, user)
-                return redirect('manage_staff')  # Redirect to a success page
-            else:
-                form.add_error(None, 'Invalid username or password.')
-
-    else:
-        form = StaffLoginForm()
-
-    return render(request, 'staff/stafflogin.html', {'form': form})
+    return render(request, 'staff/stafflogin.html')
 
 
 

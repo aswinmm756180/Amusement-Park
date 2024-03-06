@@ -16,10 +16,6 @@ urlpatterns=[
     path('manage_staff',views.manage_staff,name='manage_staff'),
     
 
-    
-    
-
-
     path('viewuser/', views.viewusers, name='viewuser'),
     path('admin_dashboard/',views.admin_dashboard,name="admin_dashboard"),
 ]
